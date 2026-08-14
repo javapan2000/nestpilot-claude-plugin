@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "nestpilot": {
+      "type": "http",
+      "url": "https://mcp.nestpilot.net/mcp"
+    }
+  }
+}

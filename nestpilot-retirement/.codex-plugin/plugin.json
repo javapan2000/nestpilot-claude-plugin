@@ -1,0 +1,45 @@
+{
+  "name": "nestpilot-retirement",
+  "version": "2.12.13+codex.20260813224500",
+  "description": "Anonymous educational retirement forecasting and coordinated retirement-decision analysis from NestPilot Foundation.",
+  "author": {
+    "name": "NestPilot Foundation",
+    "email": "john@nestpilot.org",
+    "url": "https://www.nestpilot.org"
+  },
+  "homepage": "https://www.nestpilot.org",
+  "repository": "https://github.com/javapan2000/nestpilot",
+  "keywords": [
+    "retirement",
+    "social-security",
+    "roth-conversion",
+    "medicare",
+    "financial-planning"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "apps": "./.app.json",
+  "interface": {
+    "displayName": "NestPilot Retirement",
+    "shortDescription": "Educational retirement checkups with visible assumptions",
+    "longDescription": "Open anonymous retirement review tools whose calculations run only after explicit UI clicks. The persistent checkup coordinates retirement-age, Social Security, and Roth analyses one at a time and keeps every completed result in tabs. An optional planner CTA carries the complete plan through a temporary single-use handoff; no account or transaction is created.",
+    "developerName": "NestPilot Foundation",
+    "category": "Finance",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://www.nestpilot.org",
+    "privacyPolicyURL": "https://www.nestpilot.org/legal/privacy",
+    "termsOfServiceURL": "https://www.nestpilot.org/legal/terms",
+    "defaultPrompt": [
+      "Can I afford to retire? Guide me through a complete checkup and show the assumptions.",
+      "Compare my possible retirement ages and explain how Social Security timing changes the result.",
+      "Find my Roth conversion window and show how Medicare timing could affect it."
+    ],
+    "brandColor": "#1E40AF",
+    "composerIcon": "./assets/composer-icon.png",
+    "logo": "./assets/logo.png"
+  }
+}

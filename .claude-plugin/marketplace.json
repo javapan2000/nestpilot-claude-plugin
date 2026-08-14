@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "nestpilot",
+  "description": "NestPilot Foundation plugin marketplace: free retirement-decision tools for Claude.",
+  "owner": {
+    "name": "NestPilot Foundation",
+    "email": "john@nestpilot.org"
+  },
+  "plugins": [
+    {
+      "name": "nestpilot-retirement",
+      "description": "Free retirement-decision copilot from NestPilot Foundation: Medicare timing, Social Security claiming, the Roth conversion window, and retirement-age viability — plus plan-backed forecasting and a guided retirement checkup. Bundles the public NestPilot MCP tools; no account required.",
+      "category": "finance",
+      "source": "./nestpilot-retirement",
+      "author": {
+        "name": "NestPilot Foundation",
+        "email": "john@nestpilot.org"
+      },
+      "homepage": "https://www.nestpilot.org"
+    }
+  ]
+}
