@@ -73,7 +73,10 @@ calculators retained for widget calls and backward compatibility.
 Call `medicare-guardian` with any known birth month/year, employment,
 coverage, employer-size, HSA, and creditable-drug-coverage hints. The interface
 collects missing values and calls its app-only calculator after the user
-clicks. Use only birth month and year; never request an exact birth day.
+clicks. Use only birth month and year; never request an exact birth day. If the
+user volunteers that they were born on the 1st of the month, pass
+`bornOnFirst: true` — Medicare's one day-dependent rule shifts their eligibility
+month and IEP one month earlier.
 
 Do not compare, recommend, sell, or enroll the user in Medicare plans.
 
