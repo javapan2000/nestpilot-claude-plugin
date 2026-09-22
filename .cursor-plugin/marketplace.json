@@ -1,0 +1,17 @@
+{
+  "name": "nestpilot",
+  "owner": {
+    "name": "NestPilot Foundation",
+    "email": "john@nestpilot.org"
+  },
+  "metadata": {
+    "description": "NestPilot Foundation plugin marketplace: free retirement-decision tools, no account required."
+  },
+  "plugins": [
+    {
+      "name": "nestpilot-retirement",
+      "source": "nestpilot-retirement",
+      "description": "Educational retirement checkups with visible assumptions"
+    }
+  ]
+}

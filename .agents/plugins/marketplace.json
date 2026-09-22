@@ -1,0 +1,20 @@
+{
+  "name": "nestpilot",
+  "interface": {
+    "displayName": "NestPilot Foundation"
+  },
+  "plugins": [
+    {
+      "name": "nestpilot-retirement",
+      "source": {
+        "source": "local",
+        "path": "./nestpilot-retirement"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Finance"
+    }
+  ]
+}
