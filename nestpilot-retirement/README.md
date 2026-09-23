@@ -34,7 +34,7 @@ the packaging test):
 - `.codex-plugin/plugin.json` — a complete Codex manifest (`skills`, `mcpServers`, `apps`,
   `interface`). OpenAI's docs make the root `plugin.json` canonical and reduce this file to an
   overlay for `interface` + `apps`, but the shipping CLI (0.144.0-alpha.4, observed on PR #1408)
-  still installed this file's version (`2.12.13+codex.<stamp>`), so it stays complete and
+  still installed this file's version (`<version>+codex.<stamp>`), so it stays complete and
   canonical for Codex until an install is observed selecting the root manifest. It is
   deliberately **not** mirrored into `extensions.com.openai`: when that object exists it replaces
   this file wholesale as the source of OpenAI settings, so one copy of the interface block is one
