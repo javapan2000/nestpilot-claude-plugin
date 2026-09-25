@@ -1,6 +1,6 @@
 {
   "name": "nestpilot-retirement",
-  "version": "2.12.28",
+  "version": "2.12.29",
   "description": "Free retirement-decision copilot from NestPilot Foundation: Medicare timing, Social Security claiming, the Roth conversion window, and retirement-age viability — plus plan-backed forecasting and a guided retirement checkup. Bundles the public NestPilot MCP tools; no account required.",
   "author": {
     "name": "NestPilot Foundation",
