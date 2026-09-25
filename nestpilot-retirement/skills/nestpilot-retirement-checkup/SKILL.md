@@ -1,6 +1,6 @@
 ---
 name: nestpilot-retirement-checkup
-description: Coordinate an anonymous educational retirement checkup when a user asks whether they can retire or wants retirement age, Social Security, Roth conversion, healthcare, or Medicare decisions analyzed together. Do not use for a single definition, product selection, transactions, account access, or plan saving.
+description: Coordinate an anonymous educational retirement checkup when a user asks whether they can retire or wants retirement age, Social Security, Roth conversion, healthcare, or Medicare decisions analyzed together, or wants one retirement-age or claiming question modeled on their plan. Do not use for a single definition, product selection, transactions, account access, or plan saving.
 ---
 
 # NestPilot Retirement Checkup
@@ -13,16 +13,29 @@ clicks the corresponding button in that UI.
 
 Classify the whole request before selecting a tool.
 
-- A complete or holistic retirement checkup, or any request connecting two or
-  more retirement decisions, uses `start_retirement_checkup`.
-- One standalone Social Security timing question uses
-  `open_social_security_explorer`.
+- A complete checkup, or any request connecting two or more retirement
+  decisions, uses `start_retirement_checkup` without `focus`.
+- One retirement-age or Social Security claiming question uses
+  `start_retirement_checkup` with `focus` when the user has given the plan
+  facts, or asks for their plan, portfolio, spending, taxes, or a couple's
+  joint claiming to be modeled; ask for any missing plan facts first.
+- The same question with only a few facts and no request for plan modeling
+  uses the matching explorer, `open_retirement_age_explorer` or
+  `open_social_security_explorer`; after an explorer result, offer the focused
+  analysis once, naming the facts it needs, and never open it unasked.
 - One standalone Roth conversion candidacy question uses
   `open_roth_explorer`.
-- One standalone retirement-age question uses
-  `open_retirement_age_explorer`.
 - A Medicare timing question uses `medicare-guardian`.
 - A definition or general educational question may be answered without a tool.
+
+The plan facts are current age, planned retirement age, filing status, the
+primary person's income, annual spending, and savings; when married, also the
+spouse's age, planned retirement age, and income, with 0 only when the user
+said so; for a claiming question, also the benefit estimates at full
+retirement age. A focused claiming analysis needs the user's own benefit
+estimate above 0, or the question uses the explorer instead; a focused
+retirement-age analysis needs someone still earning, or explain that no
+retirement age is left to compare.
 
 This whole-request classification takes priority over topic keywords. Never
 open multiple focused explorers for a complete checkup.
@@ -58,11 +71,31 @@ If an input changes before calculation, call `start_retirement_checkup` again
 with the corrected facts. If an input changes after calculations, explain that
 the user should start a fresh checkup so dependent results are not mixed.
 
-## Focused Explorer Workflow
+## Focused Analysis Workflow
 
-For a single focused question, call exactly one matching `open_*` launcher
-with any known inputs. The launcher never calculates. Tell the user to review
-the form and click its calculation button.
+For one retirement-age or Social Security claiming question backed by the
+plan facts:
+
+1. Read [intake-and-defaults.md](references/intake-and-defaults.md). Ask for
+   every missing plan fact together, the spouse's facts included when
+   married. Do not guess financial values.
+2. Call `start_retirement_checkup` once with the collected facts and `focus`
+   set to `retirement_age` or `social_security`.
+3. Tell the user that no calculation ran from the launcher. Ask them to review
+   the displayed inputs and defaults and click **Compare retirement ages** or
+   **Compare Social Security ages**.
+4. The widget runs that one analysis on the plan, with no baseline forecast,
+   and lists every default it applied. It offers no next step. Picking other
+   ages in the widget runs only on each pick's own click.
+5. For another analysis, start a new checkup rather than extending this one,
+   so results computed on different inputs are never mixed.
+
+## Quick Explorer Workflow
+
+For a question a quick explorer answers, as the routing above describes, call
+exactly one matching `open_*` launcher with any known inputs. The launcher
+never calculates. Tell the user to review the form and click its calculation
+button.
 
 Do not call `social_security_explorer`, `roth_explorer`, or
 `retirement_age_explorer` from the conversation. Those are app-only
@@ -100,6 +133,8 @@ tools outside this allowlist. In particular, never call
 ## Failure Rules
 
 - Missing or invalid core input: continue intake without calling a launcher.
+- Missing plan fact for a focused analysis: ask for it before launching; the
+  focused review keeps its button disabled until every plan fact is given.
 - Launcher failed: retain the user's facts, explain that the UI did not open,
   and offer to retry the same launcher.
 - App calculation failed: keep prior valid tabs and do not invent a result.

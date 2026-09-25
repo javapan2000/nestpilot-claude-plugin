@@ -69,10 +69,11 @@ plugin loads).
 
 Workflows once installed:
 
-- `/nestpilot-retirement:retirement-checkup` gathers and confirms one baseline, then runs only the
-  retirement-age, Social Security, Roth, or Medicare follow-ups justified by the request.
-- `/nestpilot-retirement:retirement-quick-check` selects the narrowest matching public tool for one
-  focused question.
+- `/nestpilot-retirement:retirement-checkup` confirms the facts, then opens the persistent checkup
+  view, which runs the baseline and each requested follow-up only on the user's clicks.
+- `/nestpilot-retirement:retirement-quick-check` answers one focused question: a focused analysis
+  (`start_retirement_checkup` with `focus`) when the user gave the plan facts, or the matching quick
+  explorer when they gave only a few (FEAT-0215).
 
 Both workflows ship as **skills** in `claude-skills/` (declared via the manifest's `skills` field,
 additive to the default `skills/` scan). They are deliberately NOT plugin `commands/`: command

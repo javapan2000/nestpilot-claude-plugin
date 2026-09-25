@@ -13,8 +13,24 @@ The widget offers requested follow-ups in this deterministic order:
 3. Roth conversion strategy.
 
 Use `requestedAnalyses` only for decisions the user asked to connect. A
-general complete checkup may include all three. The widget always runs the
-baseline first.
+general complete checkup may include all three. A checkup without `focus`
+always runs the baseline first.
+
+## Focused Analysis
+
+One retirement-age or Social Security claiming question uses
+`start_retirement_checkup` with `focus` when the user has given the plan
+facts, or asks for their plan, portfolio, spending, taxes, or a couple's
+joint claiming to be modeled; ask for any missing plan facts first. The same
+question with only a few facts and no request for plan modeling uses the
+matching explorer, `open_retirement_age_explorer` or
+`open_social_security_explorer`; after an explorer result, offer the focused
+analysis once, naming the facts it needs, and never open it unasked.
+
+A focused launch opens only its one analysis, whatever `requestedAnalyses`
+says, and has no Roth step for a Roth policy to shape. Its button runs that
+analysis directly on the plan: there is no baseline and no follow-up. The
+facts it needs are in [intake-and-defaults.md](intake-and-defaults.md).
 
 ## Retirement Age
 

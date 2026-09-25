@@ -20,6 +20,21 @@ Collect and validate all of these values:
 Ask for all missing core values together in one compact intake turn. Do not
 open the checkup until every applicable core value is known and valid.
 
+## Focused Analysis Facts
+
+The plan facts are current age, planned retirement age, filing status, the
+primary person's income, annual spending, and savings; when married, also the
+spouse's age, planned retirement age, and income, with 0 only when the user
+said so; for a claiming question, also the benefit estimates at full
+retirement age. A focused claiming analysis needs the user's own benefit
+estimate above 0, or the question uses the explorer instead; a focused
+retirement-age analysis needs someone still earning, or explain that no
+retirement age is left to compare.
+
+A focused review keeps its button disabled until every plan fact is given. A
+value of 0 counts as given; an omitted value does not. Pass the spouse's income
+as `spouseSalary`, and `0` only when the user said the spouse has none.
+
 ## Optional High-Impact Inputs
 
 Invite these once before launching the review. Let the user skip them.
@@ -70,7 +85,8 @@ Before calling `start_retirement_checkup`:
    the user selected another policy, and mention that `optimized` considers
    modeled ACA and Medicare effects.
 6. Pass the supplied facts to the launcher. The persistent UI shows the review
-   and requires the user to click **Run baseline forecast**.
+   and requires the user to click **Run baseline forecast**, or, for a focused
+   analysis, that analysis's button.
 
 Do not silently infer financial values. Simple unit conversion or summing
 itemized balances is allowed when shown to the user before launching.
