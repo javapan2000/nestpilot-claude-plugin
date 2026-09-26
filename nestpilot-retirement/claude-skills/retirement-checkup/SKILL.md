@@ -18,7 +18,9 @@ person's income, annual spending, and savings; when married, also the spouse's a
 retirement age, and income, with 0 only when the user said so; for a claiming question, also the
 benefit estimates at full retirement age. A focused claiming analysis needs the user's own benefit
 estimate above 0, or the question uses the explorer instead; a focused retirement-age analysis
-needs someone still earning, or explain that no retirement age is left to compare.
+needs someone still earning, or explain that no retirement age is left to compare. A Roth
+conversion candidacy question uses `open_roth_explorer`; plan-backed Roth modeling runs as the Roth
+step of a retirement checkup, which `start_retirement_checkup` opens without `focus`.
 
 For a complete checkup:
 
