@@ -58,11 +58,15 @@ open multiple focused explorers for a complete checkup.
 4. Call `start_retirement_checkup` once with the collected facts, requested
    analyses, and Roth policy.
 5. Tell the user that no calculation ran from the launcher. Ask them to review
-   the displayed inputs and defaults and click **Run baseline forecast**.
-6. Do not call any calculator from the conversation. The persistent widget
-   calls the app-only baseline and follow-up calculators only after explicit
-   clicks, offers one next analysis at a time, retains every completed result
-   as a tab, and keeps the web-planner continuation.
+   the displayed inputs and defaults and click **Run my checkup**.
+6. Do not call any calculator from the conversation. The widget calls the app-only calculators only after explicit clicks. The
+   checkup is one card that moves forward: it shows the plan as understood, then
+   each calculation runs only on its own click and the card becomes the verdict,
+   the next decisions, and one decision's answer; the full-screen view keeps
+   every completed result as a tab. It keeps **Continue in the NestPilot
+   planner**. When the user's message repeats one of the card's questions, the
+   answer is already on screen: summarize that result and do not call a tool
+   again.
 7. When the widget reports a completed step through model context, summarize
    only values grounded in that completed result. Do not invent missing
    financial numbers. Use [decision-snapshot.md](references/decision-snapshot.md)

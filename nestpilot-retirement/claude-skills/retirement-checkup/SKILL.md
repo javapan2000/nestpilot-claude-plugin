@@ -1,6 +1,6 @@
 ---
 name: retirement-checkup
-description: Run an anonymous NestPilot retirement checkup in the persistent checkup view, with a confirmed review and only relevant follow-up analyses.
+description: Run an anonymous NestPilot retirement checkup in the checkup card, with a confirmed review and only relevant follow-up analyses.
 argument-hint: "[current age] [single|married]"
 ---
 
@@ -37,10 +37,12 @@ For a complete checkup:
    analyses (`retirement_age`, `social_security`, `roth`: only those the request connects), and
    the Roth policy: `conservative` unless the user chooses `optimized`, which also models ACA
    subsidy and Medicare IRMAA effects. The launcher performs no calculation.
-5. Tell the user to review the displayed inputs and defaults and click **Run baseline forecast**.
-   The checkup view runs one calculation per explicit click, offers one requested follow-up at a
-   time behind its own button, keeps every completed result as a tab, and keeps **Continue in web
-   planner**.
+5. Tell the user to review the displayed inputs and defaults and click **Run my checkup**.
+   The checkup is one card that moves forward: it shows the plan as understood, then each
+   calculation runs only on its own click and the card becomes the verdict, the next decisions, and
+   one decision's answer; the full-screen view keeps every completed result as a tab. It keeps
+   **Continue in the NestPilot planner**. When the user's message repeats one of the card's
+   questions, the answer is already on screen: summarize that result and do not call a tool again.
 6. Never call a calculator from the conversation, including `retirement_forecast`,
    `retirement_age_analysis`, `social_security_analysis`, `roth_analysis`, `roth_simulate`,
    `roth_optimize`, `render_retirement_checkup`, or `medicare-analyze`. `medicare-guardian`

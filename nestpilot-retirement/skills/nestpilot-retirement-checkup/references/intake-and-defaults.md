@@ -85,7 +85,7 @@ Before calling `start_retirement_checkup`:
    the user selected another policy, and mention that `optimized` considers
    modeled ACA and Medicare effects.
 6. Pass the supplied facts to the launcher. The persistent UI shows the review
-   and requires the user to click **Run baseline forecast**, or, for a focused
+   and requires the user to click **Run my checkup**, or, for a focused
    analysis, that analysis's button.
 
 Do not silently infer financial values. Simple unit conversion or summing
