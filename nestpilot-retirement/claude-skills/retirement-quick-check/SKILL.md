@@ -18,7 +18,8 @@ Classify the whole request first, then choose the route:
   result, offer the focused analysis once, naming the facts it needs, and never open it unasked.
 - A Roth conversion candidacy question uses `open_roth_explorer`; plan-backed Roth modeling runs
   as the Roth step of a retirement checkup, which `start_retirement_checkup` opens without `focus`.
-- Medicare enrollment or coverage timing: `medicare-guardian`.
+- A Medicare enrollment question the user asked: `medicare-guardian`. Never suggest it, launch
+  it from age alone, or offer it as a next step.
 - Definition requiring no calculation: answer directly without invoking NestPilot.
 
 The plan facts are current age, planned retirement age, filing status, the primary person's

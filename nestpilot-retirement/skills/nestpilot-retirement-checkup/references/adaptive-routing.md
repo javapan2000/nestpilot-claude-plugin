@@ -55,9 +55,10 @@ silently substitute moderate.
 
 ## Medicare
 
-Medicare remains a focused widget flow launched with `medicare-guardian`.
-Do not mix its calculator into the plan-backed checkup workflow. For a user
-younger than 60 who did not ask about Medicare, do not launch it.
+Medicare remains a focused widget flow launched with `medicare-guardian`, and
+only when the user asks about Medicare enrollment — whatever their age. Do not
+mix its calculator into the plan-backed checkup workflow, never suggest it, and
+never offer it as a next step or a decision to make.
 
 ## Changed Assumptions
 
