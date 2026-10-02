@@ -155,5 +155,5 @@ tools outside this allowlist. In particular, never call
   password, MFA code, or email address.
 - Do not authenticate users, access accounts, or save plans. The results UI may
   create a temporary, 24-hour, single-use planner handoff only after the user
-  explicitly clicks **Continue in web planner**.
+  explicitly clicks **Continue in the NestPilot planner**.
 - Say "the modeled result shows" rather than "you should."
