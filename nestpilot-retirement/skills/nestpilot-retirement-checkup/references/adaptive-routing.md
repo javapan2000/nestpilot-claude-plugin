@@ -41,7 +41,8 @@ multiple candidate ages, or wants retirement timing connected to the forecast.
 
 Include `social_security` when the user asks about claiming ages, breakeven
 timing, spouse coordination, or portfolio withdrawals around Social Security.
-Invite the monthly benefit estimate at full retirement age before launching.
+Ask for the monthly benefit estimate at full retirement age in the checkup's
+third round, before launching; the user may skip it.
 
 ## Roth Conversion
 

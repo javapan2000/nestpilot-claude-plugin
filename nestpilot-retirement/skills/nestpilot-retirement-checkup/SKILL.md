@@ -43,23 +43,49 @@ open multiple focused explorers for a complete checkup.
 
 ## Complete Checkup Workflow
 
-1. Read [intake-and-defaults.md](references/intake-and-defaults.md). Ask for
-   all missing core inputs together. Do not guess financial values.
-2. Identify the connected decisions requested. Use these exact
+1. Read [intake-and-defaults.md](references/intake-and-defaults.md). Ask for a
+   complete checkup's missing facts in up to three short rounds, at most three
+   questions in a turn, and say so first: up to three short rounds, then the
+   plan with every assumption written out. Round one asks the user's age and
+   the age they would like to stop working, and whether they are married, with
+   the spouse's age and stop-working age. Round two asks about how much they
+   have saved, how much each of them earns a year, and how much they would
+   like to spend each year in retirement, saying rough numbers are fine and
+   today's spending is a good start. Round three asks for the monthly Social
+   Security estimate at full retirement age, each spouse's when married,
+   saying it is on their statement at ssa.gov/myaccount and that they may skip
+   it. Do not guess financial values.
+2. Ask only what is missing: never ask again for a fact the user gave, and
+   skip a round whose facts are all given or that the user declined, so a
+   request with nothing left to ask opens the card in the first reply. Say why
+   a question matters when it is not obvious. Someone already retired stops
+   working at today's age, with no earnings, so their earnings are not asked,
+   though a working spouse's still are; when that age is under 50 or over 80,
+   which the checkup cannot model, say so. When a Social Security estimate is
+   missing, the first result counts none for that person, and the chat says
+   so. Before a checkup's first result, never ask about growth, inflation,
+   state, how long to plan for, account types, or a Roth strategy: they stay
+   on the card as assumptions.
+3. Identify the connected decisions requested. Use these exact
    `requestedAnalyses` values:
    - `retirement_age`
    - `social_security`
    - `roth`
    Use [adaptive-routing.md](references/adaptive-routing.md) to include only
    relevant requested analyses.
-3. Use Roth policy `conservative` unless the user explicitly chooses
-   `optimized`. Explain that optimized includes modeled ACA subsidy effects
-   before Medicare and Medicare IRMAA effects where applicable.
-4. Call `start_retirement_checkup` once with the collected facts, requested
+4. Use Roth policy `conservative` unless the user explicitly chooses
+   `optimized`. When the user asks about it, explain that optimized includes
+   modeled ACA subsidy effects before Medicare and Medicare IRMAA effects where
+   applicable.
+5. Call `start_retirement_checkup` once with the collected facts, requested
    analyses, and Roth policy.
-5. Tell the user that no calculation ran from the launcher. Ask them to review
-   the displayed inputs and defaults and click **Run my checkup**.
-6. Do not call any calculator from the conversation. The widget calls the app-only calculators only after explicit clicks. The
+6. A complete checkup's card is the read-back: before it opens, say in one
+   line that it shows the plan as understood, with what was assumed, and ask
+   the user to check it and press **Run my checkup**; do not list every value,
+   explain a default, or ask for a confirmation first. A host that shows no
+   card gets the facts and the assumptions in two short lines. No calculation
+   ran from the launcher.
+7. Do not call any calculator from the conversation. The widget calls the app-only calculators only after explicit clicks. The
    checkup is one card that moves forward: it shows the plan as understood, then
    each calculation runs only on its own click and the card becomes the verdict,
    the next decisions, and one decision's answer; the full-screen view keeps
@@ -67,10 +93,16 @@ open multiple focused explorers for a complete checkup.
    planner**. When the user's message repeats one of the card's questions, the
    answer is already on screen: summarize that result and do not call a tool
    again.
-7. When the widget reports a completed step through model context, summarize
+8. When the widget reports a completed step through model context, summarize
    only values grounded in that completed result. Do not invent missing
    financial numbers. Use [decision-snapshot.md](references/decision-snapshot.md)
    for the compact response.
+9. After the first result, sharpen it one fact a turn, the biggest first, each
+   asked once and each skippable: a missing Social Security estimate, then a
+   pension or other regular income in retirement, then, before the Roth
+   decision, how savings split between pre-tax, Roth and taxable when the user
+   asked about Roth; each answer opens a fresh card with every fact, and the
+   chat says what moved only from completed results.
 
 If an input changes before calculation, call `start_retirement_checkup` again
 with the corrected facts. If an input changes after calculations, explain that

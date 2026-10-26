@@ -69,7 +69,7 @@ plugin loads).
 
 Workflows once installed:
 
-- `/nestpilot-retirement:retirement-checkup` confirms the facts, then opens the persistent checkup
+- `/nestpilot-retirement:retirement-checkup` asks a few questions at a time, then opens the persistent checkup
   view, which runs the baseline and each requested follow-up only on the user's clicks.
 - `/nestpilot-retirement:retirement-quick-check` answers one focused question: a focused analysis
   (`start_retirement_checkup` with `focus`) when the user gave the plan facts, or the matching quick
